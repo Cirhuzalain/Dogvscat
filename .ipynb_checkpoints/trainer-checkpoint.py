@@ -1,5 +1,6 @@
+import torch.nn.functional as F
 
-def train(epoch, model,):
+def train(epoch, model, train_loader, optimizer):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
 
@@ -13,7 +14,7 @@ def train(epoch, model,):
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
             
-def test(model):
+def test(model, valid_loader):
     model.eval()
     test_loss = 0
     correct = 0
