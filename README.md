@@ -1,16 +1,11 @@
 # Dogvscat Example
 
-## Step 1
-
-Use `conda create -n assignment python=3.6` command
-
-
-## Step 2
+## Create and activate conda environment
 
 Use `conda env create -f environment.yaml` command
 
 
-## Step 3
+## Train and evaluate the model
 
 Use `python main.py` command
 

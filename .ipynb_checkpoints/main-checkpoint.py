@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import os
 
-from model import CNN1
+from model import CNN1, CNN2
 from dataset import MyDataset
 from trainer import train, test
 from pathlib import Path
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     valid_loader = torch.utils.data.DataLoader(valid_data, batch_size=batch_size,  num_workers=num_workers,shuffle=True)
 
 
-    # Instantiate mode
-    model_cnn = CNN1(input_size, n_features, output_size)
+    # Create model
+    model_cnn = CNN2(input_size, n_features, output_size)
     optimizer = optim.SGD(model_cnn.parameters(), lr=0.01, momentum=0.5)
 
     for epoch in range(5):
