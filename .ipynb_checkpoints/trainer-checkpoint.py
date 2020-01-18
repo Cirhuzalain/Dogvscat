@@ -1,8 +1,9 @@
 import torch.nn.functional as F
+from tqdm import tqdm
 
 def train(epoch, model, train_loader, optimizer):
     model.train()
-    for batch_idx, (data, target) in enumerate(train_loader):
+    for batch_idx, (data, target) in tqdm(enumerate(train_loader)):
 
         optimizer.zero_grad()
         output = model(data)
