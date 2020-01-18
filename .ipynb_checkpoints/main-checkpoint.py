@@ -5,6 +5,7 @@ import torch.nn as nn
 import numpy as np
 import pandas as pd
 import os
+import argparse
 
 from model import CNN1, CNN2
 from dataset import MyDataset
@@ -16,10 +17,16 @@ from torch.optim import lr_scheduler
 from matplotlib import pyplot as plt
 
 
-if __name__ == '__main__':
-
+def main():
+    # Add argument parser 
+    parser = argparse.ArgumentParser(description='Dog vs Cat Example')
+    parser.add_argument('--data', 
+                        type=str, default='/home/aims/Dropbox/AMMI/Tutorial/NN_1/project/Cat_Dog_data', 
+                        help='Folder that contain your training and testing data')
+    args = parser.parse_args()
+    
     # set path
-    PATH=Path('/home/aims/Dropbox/AMMI/Tutorial/NN_1/project/Cat_Dog_data')
+    PATH=Path(args.data)
     TRAIN =Path(PATH/'train')
     VALID = Path(PATH/'test')
 
@@ -55,5 +62,6 @@ if __name__ == '__main__':
     for epoch in range(5):
         train(epoch, model_cnn, train_loader, optimizer)
         test(model_cnn, valid_loader)
-    
 
+if __name__ == '__main__':
+    main()
